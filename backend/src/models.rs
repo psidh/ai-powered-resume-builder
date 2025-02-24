@@ -8,7 +8,7 @@ pub struct User {
     pub password: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct Resume {
     pub id: Uuid,
     pub user_id: Uuid,
