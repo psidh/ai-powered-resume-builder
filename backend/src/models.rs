@@ -5,7 +5,19 @@ use uuid::Uuid;
 pub struct User {
     pub id: Uuid,
     pub email: String,
-    pub password: String,
+    pub password: String, // Stored as a hashed password
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct RegisterUser {
+    pub email: String,
+    pub password: String, // Plain text password from user input
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+pub struct LoginUser {
+    pub email: String,
+    pub password: String, // Plain text password for login
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
