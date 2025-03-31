@@ -14,6 +14,8 @@ use std::net::SocketAddr;
 use std::sync::Arc;
 use tokio::net::TcpListener;
 use tokio::sync::Mutex;
+use tower_http::cors::{Any, CorsLayer};
+use axum::http::Method;
 use tracing::{error, info};
 use tracing_subscriber;
 
@@ -57,7 +59,12 @@ async fn main() {
 
     info!("✅ Initialized Gemini AI Service");
 
-    let app = create_router(db, app_state, gemini_service.clone());
+    let cors = CorsLayer::new()
+        .allow_methods([Method::GET, Method::POST, Method::PUT, Method::DELETE])
+        .allow_origin(Any) // ⚠️ Allow all origins (restrict in production)
+        .allow_headers([axum::http::header::CONTENT_TYPE]);
+
+    let app = create_router(db, app_state, gemini_service.clone()).layer(cors);
 
     // Use dynamic port for deployment, fallback to 3000 locally
     let port = env::var("PORT").unwrap_or_else(|_| "3000".to_string());

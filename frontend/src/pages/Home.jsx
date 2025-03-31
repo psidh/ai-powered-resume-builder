@@ -4,7 +4,7 @@ function Home() {
   return (
     <div className="flex flex-col ">
       {/* Navbar */}
-      <nav className="bg-white shadow-md px-8 py-6 flex justify-between items-center">
+      <nav className="bg-white  px-8 py-6 flex justify-between items-center">
         <h1 className="text-xl font-medium text-yellow-600">Agni</h1>
         <ul className="flex space-x-6 text-neutral-500">
           <a href="/" className=" hover:text-yellow-500 cursor-pointer">Home</a>
@@ -24,7 +24,7 @@ function Home() {
       {/* About Section */}
       {/* About Section */}
       <section className="h-[100vh] py-16 px-6 flex flex-col items-center justify-center text-center" id="about">
-        <h2 className="text-4xl font-medium text-yellow-700 mb-6">What is this?</h2>
+        <h2 className="text-4xl font-medium text-yellow-600 mb-6">What is this?</h2>
         <p className="max-w-2xl text-lg font-light text-neutral-500">
           This is a modern, minimal, and responsive landing page designed to
           showcase your product or idea with a Google-like aesthetic. We focus
@@ -66,7 +66,7 @@ function Home() {
         </div>
 
         {/* CTA Button */}
-        <button className="mt-10 px-8 py-3 bg-yellow-600 text-white text-lg font-normal rounded-full shadow-md hover:bg-yellow-700 transition duration-300">
+        <button className="mt-10 px-8 py-3 bg-yellow-600 text-white text-lg font-normal rounded-full  hover:bg-yellow-700 transition duration-300">
           More Info
         </button>
       </section>
