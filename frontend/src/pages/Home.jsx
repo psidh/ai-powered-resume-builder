@@ -18,7 +18,7 @@ function Home() {
         <h2 className="relative text-6xl font-medium text-yellow-900">
           Agni - AI Powered Resume Builder
         </h2>
-        <button className="bg-yellow-600 mt-24 px-8 text-xl py-3 rounded-full text-white">Get Started</button>
+        <a href="/login" className="bg-yellow-600 mt-24 px-8 text-xl py-3 rounded-full text-white">Get Started</a>
       </header>
 
       {/* About Section */}

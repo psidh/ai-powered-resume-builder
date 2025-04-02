@@ -23,6 +23,8 @@ function Auth() {
       : "https://ai-powered-resume-builder-x144.onrender.com/login";
 
     try {
+      console.log(JSON.stringify(formData));
+      
       const response = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateResume() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     user_id: "", // UUID should be generated or retrieved
     name: "",
@@ -28,52 +30,52 @@ export default function CreateResume() {
     setLoading(true);
     setError("");
     setSuccessMessage("");
+    navigate("/dashboard");
+    // const token = Cookies.get("auth_token");
+    // if (!token) {
+    //   setError("User not authenticated");
+    //   setLoading(false);
+    //   return;
+    // }
 
-    const token = Cookies.get("auth_token");
-    if (!token) {
-      setError("User not authenticated");
-      setLoading(false);
-      return;
-    }
+    // const requestData = {
+    //   user_id: formData.user_id, // Ensure this is a valid UUID
+    //   name: formData.name,
+    //   experience: formData.experience,
+    //   skills: formData.skills, // Already an array
+    // };
 
-    const requestData = {
-      user_id: formData.user_id, // Ensure this is a valid UUID
-      name: formData.name,
-      experience: formData.experience,
-      skills: formData.skills, // Already an array
-    };
+    // try {
+    //   const response = await fetch(
+    //     "https://ai-powered-resume-builder-x144.onrender.com/generate_resume",
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         "Authorization": `Bearer ${token}`,
+    //       },
+    //       body: JSON.stringify(requestData),
+    //     }
+    //   );
 
-    try {
-      const response = await fetch(
-        "https://ai-powered-resume-builder-x144.onrender.com/generate_resume",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-          },
-          body: JSON.stringify(requestData),
-        }
-      );
+    //   const data = await response.json();
 
-      const data = await response.json();
+    //   if (response.ok) {
+    //     setSuccessMessage("Resume successfully generated!");
+    //   } else {
+    //     setError(data.message || "Failed to generate resume");
+    //   }
+    // } catch (err) {
+    //   setError("Something went wrong. Please try again.");
+    // }
 
-      if (response.ok) {
-        setSuccessMessage("Resume successfully generated!");
-      } else {
-        setError(data.message || "Failed to generate resume");
-      }
-    } catch (err) {
-      setError("Something went wrong. Please try again.");
-    }
-
-    setLoading(false);
+    // setLoading(false);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen px-6 bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen px-6 bg-yellow-50">
       <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center mb-4">Create Resume</h2>
+        <h2 className="text-2xl font-semibold text-yellow-700 text-center mb-4">Create Resume</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
@@ -116,7 +118,7 @@ export default function CreateResume() {
           )}
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition"
+            className="w-full bg-yellow-500 text-white py-3 px-8 rounded-full hover:bg-yellow-600 transition"
             disabled={loading}
           >
             {loading ? "Submitting..." : "Generate Resume"}
